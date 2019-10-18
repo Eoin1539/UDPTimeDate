@@ -46,14 +46,17 @@ private static void run() {
 		dgramSocket.receive(inPacket);	
 		response = new String(inPacket.getData(), 0, inPacket.getLength());	
 		System.out.println("\n<SERVER> " + response);
-            
-	}while (!message.equals("STOP"));
+                System.out.println("The programme will now terminate");
+                System.out.println("*Closing connection... *");
+                System.exit(0);
+	}while (true);
         
     } catch(IOException e) {
         e.printStackTrace();
         } finally {
-            System.out.println("\n Closing connection... ");
-            dgramSocket.close();	
+            System.out.println("\n *Closing connection... *");
+            dgramSocket.close();
+            System.exit(1);
         }
 }
 }
